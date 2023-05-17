@@ -25,6 +25,12 @@ class GridSquare {
   }
 
   draw (): void {
+    ctx.strokeRect(
+      this.position.x,
+      this.position.y,
+      this.height,
+      this.width)
+    ctx.strokeStyle='black'
     ctx.fillStyle = this.color
     ctx.fillRect(
       this.position.x,
