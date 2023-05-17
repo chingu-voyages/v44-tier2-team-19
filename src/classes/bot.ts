@@ -1,5 +1,5 @@
 import { canvasContext as ctx } from '../browser/browserElements'
-import { InterfaceAxis, type InterfaceBot } from '../utils/interfaces'
+import { type InterfaceAxis, type InterfaceBot } from '../utils/interfaces'
 
 class Bot {
   public position: InterfaceAxis

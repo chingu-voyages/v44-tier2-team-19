@@ -1,10 +1,9 @@
-import { Boundary } from "../classes/boundary"
+import { Boundary } from '../classes/boundary'
 import { GridSquare } from '../classes/gridSquare'
-import { InterfaceAxis } from "../utils/interfaces"
+import { type InterfaceAxis } from '../utils/interfaces'
 
 const boundaries: Boundary[] = []
 const gridSquares: GridSquare[] = []
-
 
 const grid = [
   ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
@@ -26,7 +25,7 @@ const grid = [
 
 function randomSpotOnMap (): InterfaceAxis {
   // the - 2 is because we must subtract the upper block and the lower block (the edges)
-  const lenght = grid.length - 2  // horizontal
+  const lenght = grid.length - 2 // horizontal
   const deep = grid[0].length - 2 // vertical
 
   const y = Math.ceil((Math.random() * lenght))
@@ -47,7 +46,7 @@ grid.forEach((row, rowIndex) => {
             y: Boundary.height * rowIndex
           }
         }))
-      break
+        break
       case ' ':
         gridSquares.push(new GridSquare({
           position: {
@@ -59,13 +58,13 @@ grid.forEach((row, rowIndex) => {
             y: rowIndex
           }
         }))
-      break
+        break
     }
   })
 })
 
-export { 
-  boundaries, 
-  gridSquares, 
+export {
+  boundaries,
+  gridSquares,
   randomSpotOnMap
 }

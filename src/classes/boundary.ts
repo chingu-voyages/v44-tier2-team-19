@@ -1,5 +1,5 @@
 import { canvasContext as ctx } from '../browser/browserElements'
-import { InterfaceAxis, type InterfaceBoundary } from '../utils/interfaces'
+import { type InterfaceAxis, type InterfaceBoundary } from '../utils/interfaces'
 
 class Boundary {
   public position: InterfaceAxis
@@ -9,11 +9,11 @@ class Boundary {
   static width: number = 40
   static height: number = 40
 
-  constructor ({ 
+  constructor ({
     position,
     width = 40,
     height = 40,
-    color = 'green' 
+    color = 'green'
   }: InterfaceBoundary) {
     this.position = position
     this.width = width
