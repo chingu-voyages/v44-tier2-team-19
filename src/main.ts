@@ -1,64 +1,35 @@
 import { canvas, canvasContext as ctx } from './browser/browserElements'
 import { Bot } from './classes/bot'
 import { Boundary } from './classes/boundary'
-import { botMovement, circleCollideWithReactangle, getRandomSpeed } from './utils/collitions'
-// import { type GridSquare } from './classes/gridSquare'
+import { boundaries, gridSquares } from './components/arena'
+import { 
+  botMovement, 
+  circleCollideWithReactangle, 
+  getRandomSpeed 
+} from './utils/collitions'
 
 /* ============= constants ============= */
 
-// const gridSquares: GridSquare[] = []
-const boundaries: Boundary[] = []
 const bots: Bot[] = []
-
-const grid = [
-  ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '-'],
-  ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
-]
-
-/* ============== Draw Map ============== */
-
-grid.forEach((row, rowIndex) => {
-  row.forEach((symbol, columnIndex) => {
-    switch (symbol) {
-      case '-':
-        boundaries.push(new Boundary({
-          position: {
-            x: Boundary.width * columnIndex,
-            y: Boundary.height * rowIndex
-          }
-        }))
-        break
-    }
-  })
-})
+const colors = ['blue', 'yellow', 'red', 'violet', 'green', 'lightBlue', 'gray']
 
 /* ============== Draw Bots ============== */
 
-for (let i = 0; i < 8; i++) {
-  const colors = ['blue', 'yellow', 'red', 'white', 'violet', 'green', 'lightBlue', 'gray']
-  const bot = new Bot({
-    position: {
-      x: Boundary.width * 3 + (Boundary.width / 2),
-      y: Boundary.height * 6 + (Boundary.height / 2)
-    },
-    velocity: {
-      x: getRandomSpeed().x,
-      y: getRandomSpeed().y
-    },
-    color: colors[i]
-  })
-  bots.push(bot)
+function generateBots(botsNum = 4): void {
+  for (let i = 0; i < botsNum; i++) {
+    const bot = new Bot({
+      position: {
+        x: Boundary.width * 3 + (Boundary.width / 2),
+        y: Boundary.height * 6 + (Boundary.height / 2)
+      },
+      velocity: {
+        x: getRandomSpeed().x,
+        y: getRandomSpeed().y
+      },
+      color: colors[i]
+    })
+    bots.push(bot)
+  }
 }
 
 /* ================== function Animate =================== */
@@ -66,6 +37,8 @@ for (let i = 0; i < 8; i++) {
 function animate (): void {
   window.requestAnimationFrame(animate)
   ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  gridSquares.forEach(square => square.draw())
 
   // place here the function to detect collision beteween bots
 
@@ -86,8 +59,10 @@ function animate (): void {
         bot.velocity.x = 0
       }
     })
+
     bot.update()
   })
 }
 
 animate()
+generateBots()

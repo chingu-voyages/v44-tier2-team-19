@@ -1,29 +1,49 @@
 import { canvasContext as ctx } from '../browser/browserElements'
-import { type InterfaceGridSquare, type InterfacePositionsXY } from '../utils/interfaces'
+import { type InterfaceAxis, type InterfaceGridSquare } from '../utils/interfaces'
 
 class GridSquare {
-  public position: InterfacePositionsXY
-  public squareName: string
+  public position: InterfaceAxis
   public height: number
   public width: number
   public color: string
+  public squareName: InterfaceAxis
+  static width: number = 40
+  static height: number = 40
 
-  constructor ({ position, color = 'green', squareName }: InterfaceGridSquare) {
+  constructor ({
+    position,
+    width = 40,
+    height = 40,
+    color = 'white',
+    squareName
+  }: InterfaceGridSquare) {
     this.position = position
-    this.height = 50
-    this.width = 50
+    this.height = width
+    this.width = height
     this.color = color
     this.squareName = squareName
   }
 
   draw (): void {
     ctx.fillStyle = this.color
-    ctx.fillRect(this.position.x, this.position.y, this.height, this.width)
+    ctx.fillRect(
+      this.position.x,
+      this.position.y,
+      this.height,
+      this.width
+    )
+    this.drawID()
   }
 
   drawID (): void {
     ctx.fillStyle = 'black'
-    ctx.font = '30px Arial'
+    ctx.font = '10px Arial'
+    const center = {
+      x: this.position.x + (this.width / 3),
+      y: this.position.y + (this.height / 2)
+    }
+    const renderText = `${this.squareName.x}, ${this.squareName.y}`
+    ctx.fillText(renderText, center.x, center.y)
   }
 }
 

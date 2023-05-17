@@ -1,37 +1,35 @@
-interface InterfacePositionsXY {
+interface InterfaceAxis {
   x: number
   y: number
 }
 
-interface InterfacePosition {
-  position: InterfacePositionsXY
-}
-
-interface InterfaceBot extends InterfacePosition {
-  velocity: InterfacePositionsXY
+interface InterfaceBot {
+  position: InterfaceAxis
+  velocity: InterfaceAxis
   radius?: number
   color?: string
 }
 
-interface InterfaceBoundary extends InterfacePosition {
+interface InterfaceBoundary {
+  position: InterfaceAxis
   color?: string
+  width?: number
+  height?: number
 }
 
 interface InterfaceCircle extends InterfaceBot {
-  velocity: InterfacePositionsXY
+  velocity: InterfaceAxis
   radius: number
 }
 
 interface InterfaceRectangle {
   height: number
   width: number
-  position: InterfacePositionsXY
+  position: InterfaceAxis
 }
 
-interface InterfaceGridSquare {
-  position: InterfacePositionsXY
-  color: string
-  squareName: string
+interface InterfaceGridSquare extends InterfaceBoundary {
+  squareName: InterfaceAxis
 }
 
 interface InterfaceColitionElements {
@@ -40,8 +38,7 @@ interface InterfaceColitionElements {
 }
 
 export type {
-  InterfacePositionsXY,
-  InterfacePosition,
+  InterfaceAxis,
   InterfaceBot,
   InterfaceBoundary,
   InterfaceCircle,

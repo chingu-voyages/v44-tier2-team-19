@@ -1,9 +1,9 @@
 import { canvasContext as ctx } from '../browser/browserElements'
-import { type InterfaceBot, type InterfacePositionsXY } from '../utils/interfaces'
+import { InterfaceAxis, type InterfaceBot } from '../utils/interfaces'
 
 class Bot {
-  public position: InterfacePositionsXY
-  public velocity: InterfacePositionsXY
+  public position: InterfaceAxis
+  public velocity: InterfaceAxis
   public prevCollision: string[]
   public radius: number
   public color: string
