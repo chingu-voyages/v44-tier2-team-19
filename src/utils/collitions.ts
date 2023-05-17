@@ -1,6 +1,6 @@
 import { type Bot } from '../classes/bot'
 import { Boundary } from '../classes/boundary'
-import { type InterfaceColitionElements } from './interfaces'
+import { type InterfaceAxis, type InterfaceColitionElements } from './interfaces'
 
 /* ============== Calculate collition with walls ============== */
 
@@ -32,7 +32,7 @@ function circleCollideWithReactangle ({
 
 /* ============== Generate Random speeds ============== */
 
-function getRandomSpeed (collitionWall = '') {
+function getRandomSpeed (collitionWall = ''): InterfaceAxis {
   const speedX = Math.round(Math.random() * 5)
   const speedY = Math.round(Math.random() * 5)
   let x: number = 0

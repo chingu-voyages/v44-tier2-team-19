@@ -1,7 +1,11 @@
 import { canvas, canvasContext as ctx } from './browser/browserElements'
 import { Bot } from './classes/bot'
 import { Boundary } from './classes/boundary'
-import { boundaries, gridSquares } from './components/arena'
+import { 
+  boundaries, 
+  gridSquares, 
+  randomSpotOnMap 
+} from './components/arena'
 import { 
   botMovement, 
   circleCollideWithReactangle, 
@@ -17,10 +21,12 @@ const colors = ['blue', 'yellow', 'red', 'violet', 'green', 'lightBlue', 'gray']
 
 function generateBots(botsNum = 4): void {
   for (let i = 0; i < botsNum; i++) {
+    const spot = randomSpotOnMap()
+
     const bot = new Bot({
       position: {
-        x: Boundary.width * 3 + (Boundary.width / 2),
-        y: Boundary.height * 6 + (Boundary.height / 2)
+        x: Boundary.width * spot.x + (Boundary.width / 2),
+        y: Boundary.height * spot.y + (Boundary.height / 2)
       },
       velocity: {
         x: getRandomSpeed().x,
@@ -28,11 +34,13 @@ function generateBots(botsNum = 4): void {
       },
       color: colors[i]
     })
+    
     bots.push(bot)
   }
 }
 
-/* ================== function Animate =================== */
+
+/* ============== function Animate =============== */
 
 function animate (): void {
   window.requestAnimationFrame(animate)
