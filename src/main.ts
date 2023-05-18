@@ -1,25 +1,26 @@
 import { canvas, canvasContext as ctx } from './browser/browserElements'
 import { Bot } from './classes/bot'
 import { Boundary } from './classes/boundary'
-import { 
-  boundaries, 
-  gridSquares, 
-  randomSpotOnMap 
+import {
+  boundaries,
+  gridSquares,
+  randomSpotOnMap
 } from './components/arena'
-import { 
-  botMovement, 
-  circleCollideWithReactangle, 
-  getRandomSpeed 
+import {
+  botMovement,
+  circleCollideWithReactangle,
+  getRandomSpeed
 } from './utils/collitions'
 
 /* ============= constants ============= */
 
 const bots: Bot[] = []
 const colors = ['blue', 'yellow', 'red', 'violet', 'green', 'lightBlue', 'gray']
+let animationID: number
 
 /* ============== Draw Bots ============== */
 
-function generateBots(botsNum = 4): void {
+function generateBots (botsNum = 4): void {
   for (let i = 0; i < botsNum; i++) {
     const spot = randomSpotOnMap()
 
@@ -34,28 +35,27 @@ function generateBots(botsNum = 4): void {
       },
       color: colors[i]
     })
-    
+
     bots.push(bot)
   }
 }
 
-
 /* ============== function Animate =============== */
 
 function animate (): void {
-  window.requestAnimationFrame(animate)
+  animationID = window.requestAnimationFrame(animate)
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-  gridSquares.forEach(square => square.draw())
+  gridSquares.forEach(square => { square.draw() })
 
   // place here the function to detect collision beteween bots
 
   bots.forEach((bot) => {
-    // player bounces off the boundaries
-    botMovement(bot, boundaries)
+    // bot bounces off the boundaries
 
-    // if player collide with boundary, player stop
+    // if bot collide with boundary, bot stop
     boundaries.forEach((boundary) => {
+      // console.log(boundary.position)
       boundary.draw()
 
       if (
@@ -68,9 +68,23 @@ function animate (): void {
       }
     })
 
-    bot.update()
+    const newPosition = botMovement(bot, boundaries)
+    bot.update(newPosition)
   })
 }
 
-animate()
-generateBots()
+function animationLoop (): void {
+  // Pausa la ejecución durante 1000 ms
+  animate()
+  // setTimeout(() => {
+  cancelAnimation()
+  // })
+}
+
+function cancelAnimation (): void {
+  cancelAnimationFrame(animationID)
+}
+
+setInterval(() => { animationLoop() }, 1000)
+
+generateBots(1)

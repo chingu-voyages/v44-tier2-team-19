@@ -33,8 +33,8 @@ function circleCollideWithReactangle ({
 /* ============== Generate Random speeds ============== */
 
 function getRandomSpeed (collitionWall = ''): InterfaceAxis {
-  const speedX = Math.round(Math.random() * 5)
-  const speedY = Math.round(Math.random() * 5)
+  const speedX = 0.1 // Boundary.width // Math.round(Math.random() * 5)
+  const speedY = 0.1 // Boundary.height // Math.round(Math.random() * 5)
   let x: number = 0
   let y: number = 0
 
@@ -79,15 +79,15 @@ function getRandomSpeed (collitionWall = ''): InterfaceAxis {
     x = speedX
     y = randomMultiply(speedY)
   } else {
-    const newSpeedX = randomMultiply(speedX)
-    const newSpeedY = randomMultiply(speedY)
+    const newSpeedX = 0 // randomMultiply(speedX)
+    const newSpeedY = 40 // randomMultiply(speedY) // TODO: PUT SIZE OF THE BOUNDARY OR SQUARE_GRID
     // this prevent the condition where bot initial speed = 0,0
-    if (newSpeedX === 0 && newSpeedY === 0) {
-      return {
-        x: 1,
-        y: 1
-      }
-    }
+    // if (newSpeedX === 0 && newSpeedY === 0) {
+    //   return {
+    //     x: 1,
+    //     y: 1
+    //   }
+    // }
     return {
       x: newSpeedX,
       y: newSpeedY
@@ -99,12 +99,12 @@ function getRandomSpeed (collitionWall = ''): InterfaceAxis {
 
 /* ============== Movement of the Bot ============== */
 
-function botMovement (bot: Bot, boundaries: Boundary[]): void {
-  // bot touch boundary
-  const collisions: string[] = []
+function botMovement (bot: Bot, boundaries: Boundary[]): InterfaceAxis {
+  const newPosition = { x: 0, y: 0 }
 
+  // bot touch boundary
   boundaries.forEach(boundary => {
-    if (!collisions.includes('right') && circleCollideWithReactangle({
+    if (circleCollideWithReactangle({
       circle: {
         ...bot,
         velocity: { x: 5, y: 0 }
@@ -113,11 +113,11 @@ function botMovement (bot: Bot, boundaries: Boundary[]): void {
     })
     ) {
       const speeds = getRandomSpeed('right')
-      bot.velocity.y = speeds.y
-      bot.velocity.x = speeds.x
+      newPosition.y = speeds.y
+      newPosition.x = speeds.x
     }
 
-    if (!collisions.includes('left') && circleCollideWithReactangle({
+    if (circleCollideWithReactangle({
       circle: {
         ...bot,
         velocity: { x: -5, y: 0 }
@@ -126,11 +126,11 @@ function botMovement (bot: Bot, boundaries: Boundary[]): void {
     })
     ) {
       const speeds = getRandomSpeed('left')
-      bot.velocity.y = speeds.y
-      bot.velocity.x = speeds.x
+      newPosition.y = speeds.y
+      newPosition.x = speeds.x
     }
 
-    if (!collisions.includes('up') && circleCollideWithReactangle({
+    if (circleCollideWithReactangle({
       circle: {
         ...bot,
         velocity: { x: 0, y: -5 }
@@ -139,11 +139,11 @@ function botMovement (bot: Bot, boundaries: Boundary[]): void {
     })
     ) {
       const speeds = getRandomSpeed('up')
-      bot.velocity.y = speeds.y
-      bot.velocity.x = speeds.x
+      newPosition.y = speeds.y
+      newPosition.x = speeds.x
     }
 
-    if (!collisions.includes('down') && circleCollideWithReactangle({
+    if (circleCollideWithReactangle({
       circle: {
         ...bot,
         velocity: { x: 0, y: 5 }
@@ -152,10 +152,11 @@ function botMovement (bot: Bot, boundaries: Boundary[]): void {
     })
     ) {
       const speeds = getRandomSpeed('down')
-      bot.velocity.y = speeds.y
-      bot.velocity.x = speeds.x
+      newPosition.y = speeds.y
+      newPosition.x = speeds.x
     }
   })
+  return newPosition
 }
 
 export {
@@ -163,3 +164,10 @@ export {
   getRandomSpeed,
   botMovement
 }
+
+/*
+  En la 4ta iteacion vuelve al centro
+  inicia: 0
+
+  en 4 iteraciones
+*/

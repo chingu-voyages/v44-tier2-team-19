@@ -36,7 +36,7 @@ class GridSquare {
   }
 
   drawID (): void {
-    ctx.fillStyle = 'black'
+    ctx.fillStyle = this.color === 'white' ? 'black' : 'white'
     ctx.font = '10px Arial'
     const center = {
       x: this.position.x + (this.width / 3),
