@@ -48,7 +48,7 @@ class GridSquare {
       x: this.position.x + (this.width / 3),
       y: this.position.y + (this.height / 2)
     }
-    const renderText = `${this.squareName.x}, ${this.squareName.y}`
+    const renderText = `${this.squareName.x-1}, ${this.squareName.y-1}`
     ctx.fillText(renderText, center.x, center.y)
   }
 }

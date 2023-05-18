@@ -28,6 +28,13 @@ class Bot {
 
   update (): void {
     this.draw()
+    if (this.velocity.x>0 || this.velocity.x<0){
+      this.velocity.y=0
+    }
+    if (this.velocity.y>0 || this.velocity.y<0){
+      this.velocity.x=0
+    }
+    
     this.position.x += this.velocity.x
     this.position.y += this.velocity.y
   }
