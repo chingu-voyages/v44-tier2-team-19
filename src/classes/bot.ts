@@ -26,7 +26,7 @@ class Bot {
     ctx.closePath()
   }
 
-  update (newPosition: InterfaceAxis): void {
+  update (): void {
     this.draw()
     this.position.y += this.velocity.y
     this.position.x += this.velocity.x

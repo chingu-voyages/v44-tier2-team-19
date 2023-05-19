@@ -2,6 +2,27 @@ import { type Bot } from '../classes/bot'
 import { Boundary } from '../classes/boundary'
 import { type InterfaceAxis, type InterfaceColitionElements } from './interfaces'
 
+/*
+  Note A-1
+
+  Direction
+    x --> value can be random, positive or negative
+    y --> value can be random, positive or negative
+
+    up
+      x --> random
+      y --> positive (if the bot is on top, it need to move down in the y-axis)
+    down
+      x --> random
+      y --> negative (if the bot is on top, it need to move up in the y-axis)
+    right
+      x --> negative
+      y --> random
+    left
+      x --> positive
+      y --> random
+*/
+
 /* ============== Calculate collition with walls ============== */
 
 function circleCollideWithReactangle ({
@@ -33,8 +54,8 @@ function circleCollideWithReactangle ({
 /* ============== Generate Random speeds ============== */
 
 function getRandomSpeed (collitionWall = ''): InterfaceAxis {
-  const speedX = 0.1 // Boundary.width // Math.round(Math.random() * 5)
-  const speedY = 0.1 // Boundary.height // Math.round(Math.random() * 5)
+  const speedX = 40 // Boundary.width // Math.round(Math.random() * 5)
+  const speedY = 40 // Boundary.height // Math.round(Math.random() * 5)
   let x: number = 0
   let y: number = 0
 
@@ -47,24 +68,7 @@ function getRandomSpeed (collitionWall = ''): InterfaceAxis {
     }
   }
 
-  /*
-      Direction
-        x --> value can be random, positive or negative
-        y --> value can be random, positive or negative
-
-        up
-          x --> random
-          y --> positive (if the bot is on top, it need to move down in the y-axis)
-        down
-          x --> random
-          y --> negative (if the bot is on top, it need to move up in the y-axis)
-        right
-          x --> negative
-          y --> random
-        left
-          x --> positive
-          y --> random
-    */
+  // Note A-1
 
   if (collitionWall === 'up') {
     x = randomMultiply(speedX)
@@ -80,7 +84,7 @@ function getRandomSpeed (collitionWall = ''): InterfaceAxis {
     y = randomMultiply(speedY)
   } else {
     const newSpeedX = 0 // randomMultiply(speedX)
-    const newSpeedY = 40 // randomMultiply(speedY) // TODO: PUT SIZE OF THE BOUNDARY OR SQUARE_GRID
+    const newSpeedY = Boundary.height // randomMultiply(speedY) // TODO: PUT SIZE OF THE BOUNDARY OR SQUARE_GRID
     // this prevent the condition where bot initial speed = 0,0
     // if (newSpeedX === 0 && newSpeedY === 0) {
     //   return {
@@ -99,9 +103,7 @@ function getRandomSpeed (collitionWall = ''): InterfaceAxis {
 
 /* ============== Movement of the Bot ============== */
 
-function botMovement (bot: Bot, boundaries: Boundary[]): InterfaceAxis {
-  const newPosition = { x: 0, y: 0 }
-
+function botMovement (bot: Bot, boundaries: Boundary[]): void {
   // bot touch boundary
   boundaries.forEach(boundary => {
     if (circleCollideWithReactangle({
@@ -113,8 +115,8 @@ function botMovement (bot: Bot, boundaries: Boundary[]): InterfaceAxis {
     })
     ) {
       const speeds = getRandomSpeed('right')
-      newPosition.y = speeds.y
-      newPosition.x = speeds.x
+      bot.velocity.y = speeds.y
+      bot.velocity.x = speeds.x
     }
 
     if (circleCollideWithReactangle({
@@ -126,8 +128,8 @@ function botMovement (bot: Bot, boundaries: Boundary[]): InterfaceAxis {
     })
     ) {
       const speeds = getRandomSpeed('left')
-      newPosition.y = speeds.y
-      newPosition.x = speeds.x
+      bot.velocity.y = speeds.y
+      bot.velocity.x = speeds.x
     }
 
     if (circleCollideWithReactangle({
@@ -139,8 +141,8 @@ function botMovement (bot: Bot, boundaries: Boundary[]): InterfaceAxis {
     })
     ) {
       const speeds = getRandomSpeed('up')
-      newPosition.y = speeds.y
-      newPosition.x = speeds.x
+      bot.velocity.y = speeds.y
+      bot.velocity.x = speeds.x
     }
 
     if (circleCollideWithReactangle({
@@ -152,11 +154,10 @@ function botMovement (bot: Bot, boundaries: Boundary[]): InterfaceAxis {
     })
     ) {
       const speeds = getRandomSpeed('down')
-      newPosition.y = speeds.y
-      newPosition.x = speeds.x
+      bot.velocity.y = speeds.y
+      bot.velocity.x = speeds.x
     }
   })
-  return newPosition
 }
 
 export {

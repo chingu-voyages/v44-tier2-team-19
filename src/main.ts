@@ -68,23 +68,20 @@ function animate (): void {
       }
     })
 
-    const newPosition = botMovement(bot, boundaries)
-    bot.update(newPosition)
+    botMovement(bot, boundaries)
+    bot.update()
   })
-}
-
-function animationLoop (): void {
-  // Pausa la ejecución durante 1000 ms
-  animate()
-  // setTimeout(() => {
-  cancelAnimation()
-  // })
 }
 
 function cancelAnimation (): void {
   cancelAnimationFrame(animationID)
 }
 
-setInterval(() => { animationLoop() }, 1000)
+function animationLoop (): void {
+  animate()
+  cancelAnimation()
+}
+
+window.setInterval(() => { animationLoop() }, 300)
 
 generateBots(1)
