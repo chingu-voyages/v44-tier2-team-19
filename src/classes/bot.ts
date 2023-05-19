@@ -1,10 +1,16 @@
 import { canvasContext as ctx } from '../browser/browserElements'
 import { type InterfaceAxis, type InterfaceBot } from '../utils/interfaces'
 
+/*
+  InterfaceAxis equals an object with the properties x and y
+  InterfaceAxis = { x, y }
+
+  every time you read 'InterfaceAxis' this mean an object { x, y }
+*/
+
 class Bot {
   public position: InterfaceAxis
   public velocity: InterfaceAxis
-  public prevCollision: string[]
   public radius: number
   public color: string
 
@@ -13,9 +19,10 @@ class Bot {
     this.velocity = velocity
     this.color = color
     this.radius = radius
-    this.prevCollision = []
   }
 
+  // this render the bot on the map
+  // DON'T TOUCH THIS UNLESS YOU HAVE FREE TIME AND NOTHING BETTER TO DO...
   draw (): void {
     ctx.translate(this.position.x, this.position.y)
     ctx.translate(-this.position.x, -this.position.y)
@@ -26,6 +33,7 @@ class Bot {
     ctx.closePath()
   }
 
+  // update the velocity of the bot and call the draw function
   update (): void {
     this.draw()
     this.position.y += this.velocity.y

@@ -32,9 +32,11 @@ class GridSquare {
       this.height,
       this.width
     )
+    // call the drawID
     this.drawID()
   }
 
+  // draw an ID inside the square
   drawID (): void {
     ctx.fillStyle = this.color === 'white' ? 'black' : 'white'
     ctx.font = '10px Arial'
