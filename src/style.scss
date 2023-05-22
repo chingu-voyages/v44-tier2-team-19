@@ -15,9 +15,14 @@ body{
 
 }
 
+#centerDiv{
+  display:grid;
+  grid-template-rows:auto;
+}
+
 #botConfig,#leaderBoard{
   
-  height: 100%;
+  height: 80%;
   width: 50%;
   background-color:rgba(8, 137, 8, 0.646);
   border-radius:15px;
@@ -29,8 +34,10 @@ body{
 
 
 #canvasContainer{
-  display:grid;
-  grid-template-rows:10fr 1fr;
+  display:flex;
+  justify-content: center;
+ 
+
   
 }
 
@@ -52,9 +59,7 @@ body{
   height: 100%;
   width: 100%;
   font-size:15px;
-  tr{
-    background-color:pink;
-  }
+  
 
 }
 

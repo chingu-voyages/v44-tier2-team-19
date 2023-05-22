@@ -14,7 +14,7 @@ class Boundary {
     position,
     width = 40,
     height = 40,
-    color = 'rgba(0, 201, 10, 0.87)',
+    color = 'rgba(0, 201, 10, 0.5)',
     squareName
   }: InterfaceBoundary) {
     this.position = position
@@ -36,6 +36,7 @@ class Boundary {
   }
 
   drawID (): void {
+    ctx.fillStyle = 'black'
     ctx.font = '10px'
     const center = {
       x: this.position.x + (this.width / 3),
@@ -43,6 +44,10 @@ class Boundary {
     }
     const renderText = `${this.squareName.x}, ${this.squareName.y}`
     ctx.fillText(renderText, center.x, center.y)
+  }
+
+  update (): void {
+    this.color = 'rgba(0, 201, 10, 0.3)'
   }
 }
 

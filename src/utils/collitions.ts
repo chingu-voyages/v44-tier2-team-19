@@ -40,6 +40,10 @@ const DIRECTIONS = {
 
   https://www.youtube.com/watch?v=XYzA_kPWyJ8&t=2s
 */
+function flashingBoundary (boundary: Boundary): void {
+  boundary.color = 'yellow'
+}
+
 function circleCollideWithReactangle ({
   circle,
   rectangle
@@ -67,10 +71,6 @@ function circleCollideWithReactangle ({
 }
 
 /* ============== Generate Random speeds ============== */
-
-let speeds={
-  
-}
 
 function getRandomSpeed (collitionWall = ''): InterfaceAxis {
   const speedX = Boundary.width
@@ -239,5 +239,6 @@ function botMovement (bot: Bot, boundaries: Boundary[]): void {
 export {
   circleCollideWithReactangle,
   getRandomSpeed,
-  botMovement
+  botMovement,
+  flashingBoundary
 }

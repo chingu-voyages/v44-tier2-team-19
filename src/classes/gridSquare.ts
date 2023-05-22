@@ -40,7 +40,7 @@ class GridSquare {
       this.height,
       this.width
     )
-    this.drawID()
+    // this.drawID()
   }
 
   drawID (): void {

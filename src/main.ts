@@ -9,7 +9,8 @@ import {
 import {
   botMovement,
   circleCollideWithReactangle,
-  getRandomSpeed
+  getRandomSpeed,
+  flashingBoundary
 } from './utils/collitions'
 
 /* ============= constants ============= */
@@ -35,7 +36,9 @@ function generateBots (botsNum = 4): void {
         y: getRandomSpeed().y
       },
       color: colors[i],
-      gate: gates[i]
+      gate: gates[i],
+      size:{ x:50, y:50 }
+
     })
 
     bots.push(bot)
@@ -49,6 +52,7 @@ function animate (): void {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
 
   gridSquares.forEach(square => { square.draw() })
+  boundaries.forEach(boundary => { boundary.update() })
 
   // place here the function to detect collision beteween bots
 
@@ -67,6 +71,8 @@ function animate (): void {
         })) {
         bot.velocity.y = 0
         bot.velocity.x = 0
+        // console.log(bot, boundary.squareName)
+        flashingBoundary(boundary)
       }
     })
 

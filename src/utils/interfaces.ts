@@ -9,6 +9,7 @@ interface InterfaceBot {
   radius?: number
   color?: string
   gate: string
+  size: InterfaceAxis
 }
 
 interface InterfaceBoundary {
