@@ -12,6 +12,9 @@ import {
   getRandomSpeed
 } from './utils/collitions'
 
+import { Winner } from './utils/logicGates'
+
+
 /* ============= constants ============= */
 
 const bots: Bot[] = []
@@ -36,7 +39,8 @@ function generateBots (botsNum = 4): void {
         y: getRandomSpeed().y
       },
       color: colors[i],
-      value = binary[Math.floor(Math.random()*binary.length)]
+      value: binary[Math.floor(Math.random() * binary.length)],
+      name:colors[Math.floor(Math.random() * colors.length)]
     })
 
     bots.push(bot)
@@ -87,4 +91,6 @@ function animationLoop (): void {
 
 window.setInterval(() => { animationLoop() }, 300)
 
-generateBots(1)
+generateBots(2)
+
+console.log(Winner(bots[0], bots[1], 'and'))

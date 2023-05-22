@@ -4,6 +4,7 @@ interface InterfaceAxis {
 }
 
 interface InterfaceBot {
+  name: string
   position: InterfaceAxis
   velocity: InterfaceAxis
   radius?: number
@@ -38,6 +39,11 @@ interface InterfaceColitionElements {
   rectangle: InterfaceRectangle
 }
 
+interface InterfaceBotWinner {
+  number: number
+  test: string
+}
+
 export type {
   InterfaceAxis,
   InterfaceBot,
@@ -45,5 +51,6 @@ export type {
   InterfaceCircle,
   InterfaceRectangle,
   InterfaceColitionElements,
-  InterfaceGridSquare
+  InterfaceGridSquare,
+  InterfaceBotWinner
 }
