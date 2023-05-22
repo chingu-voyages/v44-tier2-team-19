@@ -9,7 +9,7 @@ class Bot {
   public color: string
   public gate: string
 
-  constructor ({ position, velocity, color = 'yellow', radius = 15,gate }: InterfaceBot) {
+  constructor ({ position, velocity, color = 'yellow', radius = 15, gate }: InterfaceBot) {
     this.position = position
     this.velocity = velocity
     this.color = color

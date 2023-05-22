@@ -68,9 +68,8 @@ function circleCollideWithReactangle ({
 
 /* ============== Generate Random speeds ============== */
 
-let speeds={
-  
-}
+// let speeds={
+// }
 
 function getRandomSpeed (collitionWall = ''): InterfaceAxis {
   const speedX = Boundary.width
