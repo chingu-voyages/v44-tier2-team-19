@@ -18,6 +18,40 @@ function Winner (a: Bot, b: Bot, gate: string): InterfaceBotWinner {
       result = { number:1, text: `${goesFirst.name} wins!` }
     }
   }
+
+  if (gate === 'or') {
+    if ((a.value === 0 && b.value === 0)) {
+      result = { number:3, text:'tie' }
+    } else if ((a.value === 1 && b.value === 1) ||
+    (a.value === 0 && b.value === 1) ||
+    (a.value === 1 && b.value === 0)) {
+      result = { number:1, text: `${goesFirst.name} wins!` }
+    }
+  }
+
+  if (gate === 'xor') {
+    if (
+      (a.value === 0 && b.value === 0)) {
+      result = { number:3, text:'tie' }
+    } else if (
+      (a.value === 0 && b.value === 1) ||
+      (a.value === 1 && b.value === 0) ||
+      (a.value === 1 && b.value === 1) ) {
+      result = { number:1, text: `${goesFirst.name} wins!` }
+    }
+  }
+
+  if (gate === 'nor') {
+    if (
+      (a.value === 1 && b.value === 1) ||
+    (a.value === 0 && b.value === 1) ||
+    (a.value === 1 && b.value === 0)) {
+      result = { number:3, text:'tie' }
+    } else if (
+      (a.value === 0 && b.value === 0)) {
+      result = { number:1, text: `${goesFirst.name} wins!` }
+    }
+  }
   return result
 }
 

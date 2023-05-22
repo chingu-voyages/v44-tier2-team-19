@@ -93,4 +93,4 @@ window.setInterval(() => { animationLoop() }, 300)
 
 generateBots(2)
 
-console.log(Winner(bots[0], bots[1], 'and'))
+console.log(Winner(bots[0], bots[1], 'xor'))
