@@ -1,5 +1,5 @@
-import { Bot } from "../classes/bot";
-import { InterfaceBotWinner } from './utils/interfaces'
+import type { Bot } from '../classes/bot'
+import type { InterfaceBotWinner } from '../utils/interfaces'
 
 function Winner (a: Bot, b: Bot, gate: string): InterfaceBotWinner {
   const bots = [a, b]
@@ -36,7 +36,7 @@ function Winner (a: Bot, b: Bot, gate: string): InterfaceBotWinner {
     } else if (
       (a.value === 0 && b.value === 1) ||
       (a.value === 1 && b.value === 0) ||
-      (a.value === 1 && b.value === 1) ) {
+      (a.value === 1 && b.value === 1)) {
       result = { number:1, text: `${goesFirst.name} wins!` }
     }
   }
@@ -52,7 +52,7 @@ function Winner (a: Bot, b: Bot, gate: string): InterfaceBotWinner {
       result = { number:1, text: `${goesFirst.name} wins!` }
     }
   }
-  return result
+  return result;
 }
 
 export { Winner }

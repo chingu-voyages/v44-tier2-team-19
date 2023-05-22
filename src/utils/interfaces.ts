@@ -41,7 +41,7 @@ interface InterfaceColitionElements {
 
 interface InterfaceBotWinner {
   number: number
-  test: string
+  text: string
 }
 
 export type {
