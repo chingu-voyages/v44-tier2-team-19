@@ -56,3 +56,8 @@ function Winner (a: Bot, b: Bot, gate: string): InterfaceBotWinner {
 }
 
 export { Winner }
+
+// Thoughts on what to do if there are more than 2 bots colliding at once
+// perhaps there could be an array of bots and the first 2 fight it out and then the
+// loser is removed from the array, and the function is called again
+// until there is only 1 bot left in the array
