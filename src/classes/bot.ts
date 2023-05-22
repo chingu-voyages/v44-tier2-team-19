@@ -8,14 +8,16 @@ class Bot {
   public radius: number
   public color: string
   public gate: string
+  public size: InterfaceAxis
 
-  constructor ({ position, velocity, color = 'yellow', radius = 15,gate }: InterfaceBot) {
+  constructor ({ position, velocity, color = 'yellow', radius = 15, gate,size }: InterfaceBot) {
     this.position = position
     this.velocity = velocity
     this.color = color
     this.radius = radius
     this.prevCollision = []
     this.gate = gate
+    this.size = size
   }
 
   draw (): void {
@@ -23,7 +25,7 @@ class Bot {
     ctx.translate(-this.position.x, -this.position.y)
     const botImage: HTMLImageElement = new Image()
     botImage.src = `src/assets/sprites/${this.gate}.png`
-    ctx.drawImage(botImage, this.position.x, this.position.y, 50, 50)
+    ctx.drawImage(botImage, this.position.x / 2, this.position.y / 2, 50, 50)
 
     // ctx.translate(this.position.x, this.position.y)
     // ctx.translate(-this.position.x, -this.position.y)
