@@ -16,6 +16,8 @@ import {
 
 const bots: Bot[] = []
 const colors = ['blue', 'yellow', 'red', 'violet', 'green', 'lightBlue', 'gray']
+const binary = [1, 0]
+
 let animationID: number
 
 /* ============== Draw Bots ============== */
@@ -33,7 +35,8 @@ function generateBots (botsNum = 4): void {
         x: getRandomSpeed().x,
         y: getRandomSpeed().y
       },
-      color: colors[i]
+      color: colors[i],
+      value = binary[Math.floor(Math.random()*binary.length)]
     })
 
     bots.push(bot)

@@ -7,13 +7,15 @@ class Bot {
   public prevCollision: string[]
   public radius: number
   public color: string
+  public value: number
 
-  constructor ({ position, velocity, color = 'yellow', radius = 15 }: InterfaceBot) {
+  constructor ({ position, velocity, color = 'yellow', radius = 15 }: InterfaceBot, value: number) {
     this.position = position
     this.velocity = velocity
     this.color = color
     this.radius = radius
     this.prevCollision = []
+    this.value = value
   }
 
   draw (): void {

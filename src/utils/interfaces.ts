@@ -8,6 +8,7 @@ interface InterfaceBot {
   velocity: InterfaceAxis
   radius?: number
   color?: string
+  value: number
 }
 
 interface InterfaceBoundary {
