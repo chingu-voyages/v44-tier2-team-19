@@ -11,6 +11,8 @@ import {
   circleCollideWithReactangle,
   getRandomSpeed
 } from './utils/collitions'
+import './assets/background'
+import './assets/sprites'
 
 /* ============= constants ============= */
 
