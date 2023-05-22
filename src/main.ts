@@ -11,8 +11,8 @@ import {
   circleCollideWithReactangle,
   getRandomSpeed
 } from './utils/collitions'
-import './assets/background'
-import './assets/sprites'
+import background from 'src\assets\background\technology-neon-background-concept-free-vector.jpg'
+import * from './assets/sprites'
 
 /* ============= constants ============= */
 
