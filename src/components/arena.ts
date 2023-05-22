@@ -70,7 +70,6 @@ grid.forEach((row, rowIndex) => {
             x: columnIndex,
             y: rowIndex
           }
-          
         }))
         break
       case ' ':

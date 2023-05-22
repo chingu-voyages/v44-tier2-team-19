@@ -8,7 +8,7 @@ class Boundary {
   public color: string
   static width: number = 40
   static height: number = 40
-  public squareName:InterfaceAxis
+  public squareName: InterfaceAxis
 
   constructor ({
     position,
@@ -16,14 +16,12 @@ class Boundary {
     height = 40,
     color = 'rgba(0, 201, 10, 0.87)',
     squareName
-    
-  }: InterfaceBoundary, 
-  ) {
+  }: InterfaceBoundary) {
     this.position = position
     this.width = width
     this.height = height
     this.color = color
-    this.squareName=squareName
+    this.squareName = squareName
   }
 
   draw (): void {
@@ -34,10 +32,11 @@ class Boundary {
       this.height,
       this.width
     )
-    this.drawID
+    this.drawID()
   }
+
   drawID (): void {
-    ctx.font = '10px Arial'
+    ctx.font = '10px'
     const center = {
       x: this.position.x + (this.width / 3),
       y: this.position.y + (this.height / 2)

@@ -25,6 +25,14 @@ class GridSquare {
   }
 
   draw (): void {
+    ctx.strokeStyle = 'purple'
+    ctx.strokeRect(
+      this.position.x,
+      this.position.y,
+      this.height,
+      this.width
+
+    )
     ctx.fillStyle = this.color
     ctx.fillRect(
       this.position.x,
@@ -32,7 +40,7 @@ class GridSquare {
       this.height,
       this.width
     )
-   
+    this.drawID()
   }
 
   drawID (): void {

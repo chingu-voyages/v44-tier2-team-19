@@ -8,6 +8,7 @@ interface InterfaceBot {
   velocity: InterfaceAxis
   radius?: number
   color?: string
+  gate: string
 }
 
 interface InterfaceBoundary {
@@ -16,6 +17,7 @@ interface InterfaceBoundary {
   width?: number
   height?: number
   squareName: InterfaceAxis
+
 }
 
 interface InterfaceCircle extends InterfaceBot {

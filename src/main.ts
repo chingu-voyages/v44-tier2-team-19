@@ -16,6 +16,7 @@ import {
 
 const bots: Bot[] = []
 const colors = ['blue', 'yellow', 'red', 'violet', 'green', 'lightBlue', 'gray']
+const gates = ['and', 'or', 'nor', 'xor']
 let animationID: number
 
 /* ============== Draw Bots ============== */
@@ -33,7 +34,8 @@ function generateBots (botsNum = 4): void {
         x: getRandomSpeed().x,
         y: getRandomSpeed().y
       },
-      color: colors[i]
+      color: colors[i],
+      gate: gates[i]
     })
 
     bots.push(bot)
@@ -49,7 +51,6 @@ function animate (): void {
   gridSquares.forEach(square => { square.draw() })
 
   // place here the function to detect collision beteween bots
-
 
   bots.forEach((bot) => {
     // bot bounces off the boundaries
