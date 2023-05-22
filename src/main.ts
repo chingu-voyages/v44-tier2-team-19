@@ -11,8 +11,7 @@ import {
   circleCollideWithReactangle,
   getRandomSpeed
 } from './utils/collitions'
-import './assets/background/technology-neon-background-concept-free-vector.jpg'
-// import './assets/sprites/and.png'
+
 /* ============= constants ============= */
 
 const bots: Bot[] = []
