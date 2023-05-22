@@ -12,7 +12,6 @@ import {
   getRandomSpeed
 } from './utils/collitions'
 import background from 'src\assets\background\technology-neon-background-concept-free-vector.jpg'
-import * from './assets/sprites'
 
 /* ============= constants ============= */
 
