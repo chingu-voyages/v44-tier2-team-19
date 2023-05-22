@@ -15,6 +15,7 @@ interface InterfaceBoundary {
   color?: string
   width?: number
   height?: number
+  squareName: InterfaceAxis
 }
 
 interface InterfaceCircle extends InterfaceBot {

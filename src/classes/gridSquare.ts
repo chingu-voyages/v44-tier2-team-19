@@ -14,7 +14,7 @@ class GridSquare {
     position,
     width = 40,
     height = 40,
-    color = 'white',
+    color = 'rgba(0, 201, 10, 0.5)',
     squareName
   }: InterfaceGridSquare) {
     this.position = position
@@ -32,11 +32,11 @@ class GridSquare {
       this.height,
       this.width
     )
-    this.drawID()
+   
   }
 
   drawID (): void {
-    ctx.fillStyle = this.color === 'white' ? 'black' : 'white'
+    ctx.fillStyle = this.color === 'purple' ? 'plum' : 'purple'
     ctx.font = '10px Arial'
     const center = {
       x: this.position.x + (this.width / 3),

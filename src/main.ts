@@ -50,6 +50,7 @@ function animate (): void {
 
   // place here the function to detect collision beteween bots
 
+
   bots.forEach((bot) => {
     // bot bounces off the boundaries
 
@@ -84,4 +85,4 @@ function animationLoop (): void {
 
 window.setInterval(() => { animationLoop() }, 300)
 
-generateBots(1)
+generateBots(3)
