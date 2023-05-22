@@ -22,7 +22,7 @@ class Bot {
     ctx.translate(this.position.x, this.position.y)
     ctx.translate(-this.position.x, -this.position.y)
     const botImage: HTMLImageElement = new Image()
-    botImage.src = `src/assets/sprites/${this.gate}.png`
+    botImage.src = `/assets/sprites/${this.gate}.png`
     ctx.drawImage(botImage, this.position.x, this.position.y, 50, 50)
 
     // ctx.translate(this.position.x, this.position.y)
