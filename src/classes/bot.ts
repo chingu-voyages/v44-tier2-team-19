@@ -9,8 +9,10 @@ class Bot {
   public radius: number
   public color: string
   public value: number
+  public gate: string
+  public size: InterfaceAxis
 
-  constructor ({ position, velocity, color = 'yellow', radius = 15, value, name }: InterfaceBot) {
+  constructor ({ position, velocity, color = 'yellow', radius = 15, value, name, gate, size }: InterfaceBot) {
     this.position = position
     this.velocity = velocity
     this.color = color
