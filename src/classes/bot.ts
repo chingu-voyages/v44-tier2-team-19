@@ -2,15 +2,15 @@ import { canvasContext as ctx } from '../browser/browserElements'
 import { type InterfaceAxis, type InterfaceBot } from '../utils/interfaces'
 
 class Bot {
+  public name: string
   public position: InterfaceAxis
   public velocity: InterfaceAxis
   public prevCollision: string[]
   public radius: number
   public color: string
-  public gate: string
-  public size: InterfaceAxis
+  public value: number
 
-  constructor ({ position, velocity, color = 'yellow', radius = 15, gate,size }: InterfaceBot) {
+  constructor ({ position, velocity, color = 'yellow', radius = 15, value, name }: InterfaceBot) {
     this.position = position
     this.velocity = velocity
     this.color = color
@@ -18,6 +18,8 @@ class Bot {
     this.prevCollision = []
     this.gate = gate
     this.size = size
+    this.value = value
+    this.name = name
   }
 
   draw (): void {

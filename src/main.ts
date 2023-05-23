@@ -13,11 +13,16 @@ import {
   flashingBoundary
 } from './utils/collitions'
 
+import { Winner } from './utils/logicGates'
+
+
 /* ============= constants ============= */
 
 const bots: Bot[] = []
 const colors = ['blue', 'yellow', 'red', 'violet', 'green', 'lightBlue', 'gray']
 const gates = ['and', 'or', 'nor', 'xor']
+const binary = [1, 0]
+
 let animationID: number
 
 /* ============== Draw Bots ============== */
@@ -37,8 +42,9 @@ function generateBots (botsNum = 4): void {
       },
       color: colors[i],
       gate: gates[i],
-      size:{ x:50, y:50 }
-
+      size:{ x:50, y:50 },
+      value: binary[Math.floor(Math.random() * binary.length)],
+      name:colors[Math.floor(Math.random() * colors.length)]
     })
 
     bots.push(bot)
@@ -93,3 +99,5 @@ function animationLoop (): void {
 window.setInterval(() => { animationLoop() }, 300)
 
 generateBots(3)
+
+console.log(Winner(bots[0], bots[1], 'xor'))
