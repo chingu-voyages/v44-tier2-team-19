@@ -18,6 +18,8 @@ body{
 #centerDiv{
   display:grid;
   grid-template-rows:auto;
+  justify-content: center;
+  justify-items: center;
 }
 
 #botConfig,#leaderBoard{
@@ -34,8 +36,7 @@ body{
 
 
 #canvasContainer{
-  display:flex;
-  justify-content: center;
+  
  
 
   
@@ -63,6 +64,7 @@ body{
 
 }
 
-td,tr,thead,th{
-  height:fit-content;
+
+button{
+  width:fit-content;
 }
